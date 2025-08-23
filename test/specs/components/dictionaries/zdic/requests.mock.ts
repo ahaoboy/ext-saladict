@@ -1,6 +1,6 @@
 import { MockRequest } from '@/components/dictionaries/helpers'
 
-export const mockSearchTexts = ['沙拉', '爱']
+export const mockSearchTexts = ['词灵', '爱']
 
 export const mockRequest: MockRequest = mock => {
   mock.onGet(/zdic/).reply(info => {

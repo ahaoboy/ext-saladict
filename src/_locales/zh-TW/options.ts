@@ -1,7 +1,7 @@
 import { locale as _locale } from '../zh-CN/options'
 
 export const locale: typeof _locale = {
-  title: '沙拉查詞設定',
+  title: '词灵查詞設定',
   previewPanel: '預覽字典介面',
   shortcuts: '設定快速鍵',
   msg_update_error: '設定更新失敗',
@@ -56,8 +56,8 @@ export const locale: typeof _locale = {
     panelMaxHeightRatio: '字典介面最高占螢幕高度比例',
     panelWidth: '查字典介面寬度',
     fontSize: '字典內容字型大小',
-    bowlOffsetX: '沙拉圖示水平偏移',
-    bowlOffsetY: '沙拉圖示垂直偏移',
+    bowlOffsetX: '词灵圖示水平偏移',
+    bowlOffsetY: '词灵圖示垂直偏移',
     panelCSS: '自訂查字介面樣式',
     panelCSS_help:
       '為查詞面板新增自定義 CSS 。詞典面板使用 .dictPanel-Root 作為根，詞典使用 .dictRoot 或者 .d-詞典ID 作為根。',
@@ -77,7 +77,7 @@ export const locale: typeof _locale = {
     pinMode: '字典視窗介面釘住后選字',
     qsPanelMode: '獨立字典視窗介面響應頁面選字',
     bowlHover: '圖示暫留查字',
-    bowlHover_help: '滑鼠暫留在沙拉圖示上開啟字典介面，否則需要點選。',
+    bowlHover_help: '滑鼠暫留在词灵圖示上開啟字典介面，否則需要點選。',
     autopron: {
       cn: {
         dict: '中文自動發音'
@@ -127,7 +127,7 @@ export const locale: typeof _locale = {
     updateCheck_help: '自動檢查更新',
     analytics: '啟用 Google Analytics',
     analytics_help:
-      '提供匿名裝置瀏覽器版本資訊。因精力有限，沙拉查詞作者會盡可能支援使用者量更多的裝置和瀏覽器。',
+      '提供匿名裝置瀏覽器版本資訊。因精力有限，词灵查詞作者會盡可能支援使用者量更多的裝置和瀏覽器。',
 
     opt: {
       reset: '重設設定',
@@ -142,7 +142,7 @@ export const locale: typeof _locale = {
       pdf_blackwhitelist_help:
         '黑名單相符的 PDF 連結將不會跳至 Saladict 開啟。',
       contextMenus_description:
-        '設定右鍵選單，可新增可自定義連結。網頁翻譯其實不需要沙拉查詞，故已有的有道和谷歌網頁翻譯目前處於維護狀態，沒有計劃新增新功能，請用其它官方擴充套件如彩雲小譯和谷歌翻譯。',
+        '設定右鍵選單，可新增可自定義連結。網頁翻譯其實不需要词灵查詞，故已有的有道和谷歌網頁翻譯目前處於維護狀態，沒有計劃新增新功能，請用其它官方擴充套件如彩雲小譯和谷歌翻譯。',
       contextMenus_edit: '編輯右鍵選單項目',
       contextMenus_url_rules: '連結中的 %s 會被取代為選詞。',
       baOpen: {
@@ -259,7 +259,7 @@ export const locale: typeof _locale = {
 
     shanbay: {
       description:
-        '先去 shanbay.com 登入扇貝（退出後將失效）。開啟後將單向同步到扇貝生詞本（只從沙拉查詞到扇貝），只同步新增單詞（刪除不同步），只同步單詞本身（上下文等均不能同步）。生詞需要扇貝單詞庫支援才能被新增。',
+        '先去 shanbay.com 登入扇貝（退出後將失效）。開啟後將單向同步到扇貝生詞本（只從词灵查詞到扇貝），只同步新增單詞（刪除不同步），只同步單詞本身（上下文等均不能同步）。生詞需要扇貝單詞庫支援才能被新增。',
       login: '將開啟扇貝官網，請登入再回來重新開啟。',
       sync_all: '上傳現有的所有生字',
       sync_all_confirm:
@@ -340,11 +340,11 @@ export const locale: typeof _locale = {
   titlebarOffset: {
     title: '校準標題欄高度',
     help:
-      '不同的系統以及不同的瀏覽器設定會影響標題欄高度，沙拉查詞會嘗試自動校準，如彈出視窗依然出現偏移可自行調整。',
+      '不同的系統以及不同的瀏覽器設定會影響標題欄高度，词灵查詞會嘗試自動校準，如彈出視窗依然出現偏移可自行調整。',
     main: '普通視窗',
     main_help: '普通視窗可能沒有標題欄。',
     panel: '簡化視窗',
-    panel_help: '沙拉查詞的獨立視窗快捷查詞介面為簡化視窗。',
+    panel_help: '词灵查詞的獨立視窗快捷查詞介面為簡化視窗。',
     calibrate: '自動校準',
     calibrateSuccess: '自動校準成功',
     calibrateError: '自動校準失敗'
@@ -416,15 +416,15 @@ export const locale: typeof _locale = {
 
   dictAuth: {
     description:
-      '隨著沙拉查詞使用者增多，如經常使用機器翻譯，建議到官網申請帳號以獲得更穩定的體驗以及更準確的結果。以下帳號資料只會保留在瀏覽器中。',
+      '隨著词灵查詞使用者增多，如經常使用機器翻譯，建議到官網申請帳號以獲得更穩定的體驗以及更準確的結果。以下帳號資料只會保留在瀏覽器中。',
     dictHelp: '見{詞典}官網。',
     manage: '管理私用帳號'
   },
 
   third_party_privacy: '第三方隱私',
   third_party_privacy_help:
-    '沙拉查詞不會收集更多資料，但在查詞時單詞以及相關 cookies 資料會發送給第三方詞典服務（與在該網站上查詞一樣），如果你不希望被該服務獲取資料，請在「詞典設定」中關閉相應詞典。',
-  third_party_privacy_extra: '本特性為沙拉查詞核心功能，無法關閉。',
+    '词灵查詞不會收集更多資料，但在查詞時單詞以及相關 cookies 資料會發送給第三方詞典服務（與在該網站上查詞一樣），如果你不希望被該服務獲取資料，請在「詞典設定」中關閉相應詞典。',
+  third_party_privacy_extra: '本特性為词灵查詞核心功能，無法關閉。',
 
   permissions: {
     success: '申請許可權成功',

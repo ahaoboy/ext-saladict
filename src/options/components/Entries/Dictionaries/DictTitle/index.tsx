@@ -56,12 +56,12 @@ function openDictSrcPage(dictID: DictID, dictLangs: string) {
   const text = +dictLangs[0]
     ? 'salad'
     : +dictLangs[1] || +dictLangs[2]
-    ? '沙拉'
-    : +dictLangs[3]
-    ? 'サラダ'
-    : +dictLangs[4]
-    ? '샐러드'
-    : 'salad'
+      ? '词灵'
+      : +dictLangs[3]
+        ? 'サラダ'
+        : +dictLangs[4]
+          ? '샐러드'
+          : 'salad'
 
   message.send({
     type: 'OPEN_DICT_SRC_PAGE',

@@ -1,10 +1,10 @@
 export const locale = {
   chooseLang: '-选择其它语言-',
-  standalone: '沙拉查词-独立查词窗口',
+  standalone: '词灵查词-独立查词窗口',
   fetchLangList: '获取全部语言列表',
   transContext: '重新翻译',
   neverShow: '不再弹出',
-  fromSaladict: '来自沙拉查词面板',
+  fromSaladict: '来自词灵查词面板',
   tip: {
     historyBack: '上一个查词记录',
     historyNext: '下一个查词记录',

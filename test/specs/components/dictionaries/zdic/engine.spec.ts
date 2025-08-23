@@ -19,7 +19,7 @@ describe('Dict/Zdic/engine', () => {
     const profile = getDefaultProfile() as ProfileMutable
     profile.dicts.all.zdic.options.audio = true
     return retry(() =>
-      search('沙拉', getDefaultConfig(), profile, { isPDF: false }).then(
+      search('词灵', getDefaultConfig(), profile, { isPDF: false }).then(
         ({ result, audio }) => {
           expect(audio && typeof audio.py).toBe('string')
           expect(result.length).toBeGreaterThan(0)

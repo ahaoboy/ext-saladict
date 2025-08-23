@@ -1,6 +1,6 @@
 module.exports = {
   files: [
-    ['沙拉.html', 'https://www.zdic.net/hans/' + encodeURIComponent('沙拉')],
+    ['词灵.html', 'https://www.zdic.net/hans/' + encodeURIComponent('词灵')],
     ['爱.html', 'https://www.zdic.net/hans/' + encodeURIComponent('爱')]
   ]
 }

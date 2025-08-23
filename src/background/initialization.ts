@@ -221,7 +221,7 @@ async function onInstalled({
               type: 'basic',
               iconUrl: browser.runtime.getURL(`assets/icon-128.png`),
               title: isZh
-                ? `沙拉查词已更新到 ${data.version}`
+                ? `词灵查词已更新到 ${data.version}`
                 : `Saladict has updated to ${data.version}`,
               message: data.data
                 .map((line, i) => `${i + 1}. ${line}`)

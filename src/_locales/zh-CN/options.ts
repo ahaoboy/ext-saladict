@@ -1,5 +1,5 @@
 export const locale = {
-  title: '沙拉查词设置',
+  title: '词灵查词设置',
   previewPanel: '预览查词面板',
   shortcuts: '设置快捷键',
   msg_update_error: '设置更新失败',
@@ -54,8 +54,8 @@ export const locale = {
     panelMaxHeightRatio: '查词面板最高占屏幕比例',
     panelWidth: '查词面板宽度',
     fontSize: '词典内容字体大小',
-    bowlOffsetX: '沙拉图标水平偏移',
-    bowlOffsetY: '沙拉图标垂直偏移',
+    bowlOffsetX: '词灵图标水平偏移',
+    bowlOffsetY: '词灵图标垂直偏移',
     panelCSS: '自定义查词面板样式',
     panelCSS_help:
       '为查词面板添加自定义 CSS 。词典面板使用 .dictPanel-Root 作为根，词典使用 .dictRoot 或者 .d-词典ID 作为根。',
@@ -75,7 +75,7 @@ export const locale = {
     pinMode: '查词面板钉住后划词',
     qsPanelMode: '独立窗口响应页面划词',
     bowlHover: '图标悬停查词',
-    bowlHover_help: '鼠标悬停在沙拉图标上触发查词，否则需要点击。',
+    bowlHover_help: '鼠标悬停在词灵图标上触发查词，否则需要点击。',
     autopron: {
       cn: {
         dict: '中文自动发音'
@@ -124,7 +124,7 @@ export const locale = {
     updateCheck_help: '自动检查更新',
     analytics: '启用 Google Analytics',
     analytics_help:
-      '提供匿名设备浏览器版本信息。因精力有限，沙拉查词作者会尽可能支持用户量更多的设备和浏览器。',
+      '提供匿名设备浏览器版本信息。因精力有限，词灵查词作者会尽可能支持用户量更多的设备和浏览器。',
 
     opt: {
       reset: '重置设定',
@@ -139,7 +139,7 @@ export const locale = {
       pdf_blackwhitelist_help:
         '黑名单匹配的 PDF 链接将不会跳转到 Saladict 打开。',
       contextMenus_description:
-        '设置右键菜单，可添加可自定义链接。网页翻译其实不需要沙拉查词，故已有的有道和谷歌网页翻译目前处于维护状态，没有计划添加新功能，请用其它官方扩展如彩云小译和谷歌翻译。',
+        '设置右键菜单，可添加可自定义链接。网页翻译其实不需要词灵查词，故已有的有道和谷歌网页翻译目前处于维护状态，没有计划添加新功能，请用其它官方扩展如彩云小译和谷歌翻译。',
       contextMenus_edit: '编辑右键菜单项目',
       contextMenus_url_rules: '链接中的 %s 会被替换为选词。',
       baOpen: {
@@ -255,7 +255,7 @@ export const locale = {
 
     shanbay: {
       description:
-        '先去 shanbay.com 登录扇贝（退出后将失效）。开启后每次添加生词将自动单向同步到扇贝生词本（只从沙拉查词到扇贝），只同步新增单词（删除不同步），只同步单词本身（上下文等均不能同步）。生词需要扇贝单词库支持才能被添加。',
+        '先去 shanbay.com 登录扇贝（退出后将失效）。开启后每次添加生词将自动单向同步到扇贝生词本（只从词灵查词到扇贝），只同步新增单词（删除不同步），只同步单词本身（上下文等均不能同步）。生词需要扇贝单词库支持才能被添加。',
       login: '将打开扇贝官网，请登录再回来重新开启。',
       sync_all: '上传现有的所有生词',
       sync_all_confirm:
@@ -336,11 +336,11 @@ export const locale = {
   titlebarOffset: {
     title: '校准标题栏高度',
     help:
-      '不同的系统以及不同的浏览器设置会影响标题栏高度，沙拉查词会尝试自动校准，如弹出窗口依然出现偏移可自行调整。',
+      '不同的系统以及不同的浏览器设置会影响标题栏高度，词灵查词会尝试自动校准，如弹出窗口依然出现偏移可自行调整。',
     main: '普通窗口',
     main_help: '普通窗口可能没有标题栏。',
     panel: '简化窗口',
-    panel_help: '沙拉查词的独立窗口快捷查词面板为简化窗口。',
+    panel_help: '词灵查词的独立窗口快捷查词面板为简化窗口。',
     calibrate: '自动校准',
     calibrateSuccess: '自动校准成功',
     calibrateError: '自动校准失败'
@@ -412,15 +412,15 @@ export const locale = {
 
   dictAuth: {
     description:
-      '随着沙拉查词用户增多，如经常使用机器翻译，建议到官网申请帐号以获得更稳定的体验以及更准确的结果。以下帐号数据只会保留在浏览器中。',
+      '随着词灵查词用户增多，如经常使用机器翻译，建议到官网申请帐号以获得更稳定的体验以及更准确的结果。以下帐号数据只会保留在浏览器中。',
     dictHelp: '见{词典}官网。',
     manage: '管理私用帐号'
   },
 
   third_party_privacy: '第三方隐私',
   third_party_privacy_help:
-    '沙拉查词不会收集更多数据，但在查词时单词以及相关 cookies 数据会发送给第三方词典服务（与在该网站上查词一样），如果你不希望被该服务获取数据，请在「词典设置」中关闭相应词典。',
-  third_party_privacy_extra: '本特性为沙拉查词核心功能，无法关闭。',
+    '词灵查词不会收集更多数据，但在查词时单词以及相关 cookies 数据会发送给第三方词典服务（与在该网站上查词一样），如果你不希望被该服务获取数据，请在「词典设置」中关闭相应词典。',
+  third_party_privacy_extra: '本特性为词灵查词核心功能，无法关闭。',
 
   permissions: {
     success: '申请权限成功',
