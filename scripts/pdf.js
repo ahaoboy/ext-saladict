@@ -30,9 +30,9 @@ shell.cd(path.resolve(__dirname))
 shell.rm('-rf', cacheDir)
 
 exec(
-  `wget https://github.com/mozilla/pdf.js/releases/download/v2.16.105/pdfjs-2.16.105-dist.zip -O pdfjs.tar.gz &&
+  `wget https://github.com/mozilla/pdf.js/releases/download/v2.16.105/pdfjs-2.16.105-dist.zip -O pdfjs.zip &&
   mkdir -p ${cacheDir} &&
-  tar -xzvf pdfjs.tar.gz -C ${cacheDir}`,
+  unzip pdfjs.zip -d ${cacheDir}`,
   'Error: download failed'
 )
 
@@ -113,6 +113,7 @@ async function modifyViewerHTML() {
     <script src="/assets/browser-polyfill.min.js"></script>
     <script src="/assets/inject-dict-panel.js"></script>
     <script src="/assets/vimium-c-injector.js"></script>
+    <script src="/assets/dark-mode.js"></script>
   </body>
 `
   )
