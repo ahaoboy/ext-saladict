@@ -33,7 +33,7 @@ jobs:
           for dir in */; do
               name="${dir%/}"
               cd $dir
-              zip -r -q "../${name}.zip" "."
+              zip -r -q "../ext-saladict-${name}.zip" "."
               cd ..
           done
 
