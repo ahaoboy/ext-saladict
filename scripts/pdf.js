@@ -15,10 +15,10 @@ const cacheDir = 'pdf'
 const repoRoot = 'pdf'
 const publicPDFRoot = path.join(__dirname, '../assets/pdf')
 const pdfFiles = [
-  'build/pdf.js',
-  'build/pdf.worker.js',
-  'web/debugger.js',
-  'web/viewer.js',
+  'build/pdf.mjs',
+  'build/pdf.worker.mjs',
+  'web/debugger.mjs',
+  'web/viewer.mjs',
   'web/viewer.html',
   'web/viewer.css'
 ]
@@ -30,7 +30,7 @@ shell.cd(path.resolve(__dirname))
 shell.rm('-rf', cacheDir)
 
 exec(
-  `wget https://github.com/mozilla/pdf.js/releases/download/v2.16.105/pdfjs-2.16.105-dist.zip -O pdfjs.zip &&
+  `wget https://github.com/mozilla/pdf.js/releases/download/v5.4.54/pdfjs-5.4.54-dist.zip -O pdfjs.zip &&
   mkdir -p ${cacheDir} &&
   unzip pdfjs.zip -d ${cacheDir}`,
   'Error: download failed'
@@ -62,7 +62,7 @@ async function startUpgrade() {
 }
 
 async function modifyViewrJS() {
-  const viewerPath = path.join(__dirname, repoRoot, 'web/viewer.js')
+  const viewerPath = path.join(__dirname, repoRoot, 'web/viewer.mjs')
   let file = await fs.readFile(viewerPath, 'utf8')
 
   file = '/* saladict */ window.__SALADICT_PDF_PAGE__ = true;\n' + file
@@ -70,7 +70,7 @@ async function modifyViewrJS() {
   // change default pdf
   const defaultPDFTester = /defaultUrl = {[\s\S]*?value: (['"]\S+?.pdf['"]),[\s\S]*?kind: OptionKind\.VIEWER/
   if (!defaultPDFTester.test(file)) {
-    shell.echo('Could not locate default pdf in viewer.js')
+    shell.echo('Could not locate default pdf in viewer.mjs')
     shell.exit(1)
   }
   file = file.replace(defaultPDFTester, (m, p1) =>
@@ -86,7 +86,7 @@ async function modifyViewrJS() {
   file = file.replace(validateTester, '/* saladict */')
 
   // force dark mode
-  const viewCssTester = /"viewerCssTheme": 0,/
+  const viewCssTester = /viewerCssTheme: 0,/
   if (!viewCssTester.test(file)) {
     shell.echo('Could not locate viewerCssTheme config in viewer.js')
     shell.exit(1)
@@ -167,8 +167,8 @@ async function cloneFiles() {
   // copy locale.properties
   await fs.ensureDir(path.join(publicPDFRoot, 'web/locale'))
   await fs.copy(
-    path.join(__dirname, repoRoot, 'web/locale/locale.properties'),
-    path.join(publicPDFRoot, 'web/locale/locale.properties')
+    path.join(__dirname, repoRoot, 'web/locale/locale.json'),
+    path.join(publicPDFRoot, 'web/locale/locale.json')
   )
 
   const locales = (
