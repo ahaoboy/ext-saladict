@@ -7,7 +7,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: white;
+    background-color: #FFFFFFE0;
     mix-blend-mode: difference;
     z-index: 9999;
   `;
