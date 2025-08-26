@@ -245,7 +245,8 @@ module.exports = {
         })
 
       // avoid collision
-      neutrino.config.output.jsonpFunction('saladictEntry')
+      neutrino.config.output.jsonpFunction('saladictEntry').globalObject('self');
+
 
       // transform *.shadow.(css|scss) to string
       // this will be injected into shadow-dom style tag

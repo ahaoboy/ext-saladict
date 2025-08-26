@@ -75,7 +75,7 @@ function withTouchMode(config: AppConfig) {
   return fromEvent(document, 'selectionchange').pipe(
     withLatestFrom(isMouseDown$),
     debounce(([, isWithMouse]) => (isWithMouse ? mouseup$ : timer(400))),
-    map(([, isWithMouse]) => [window.getSelection(), isWithMouse] as const),
+    map(([, isWithMouse]) => [self.getSelection(), isWithMouse] as const),
     filter(
       (args): args is [Selection, boolean] =>
         !!args[0] && !isInSaladictExternal(args[0].anchorNode)
@@ -197,7 +197,7 @@ function withoutTouchMode(config: AppConfig) {
         return { self: false }
       }
 
-      const selection = window.getSelection()
+      const selection = self.getSelection()
       const text = getTextFromSelection(selection)
 
       if (!checkSupportedLangs(config.language, text)) {
@@ -284,7 +284,7 @@ export function useInPanelSelect(
       delay(10),
       withLatestFrom(clickPeriodCount$),
       map(([{ mouseup, language }, clickPeriodCount]) => {
-        const selection = window.getSelection()
+        const selection = self.getSelection()
         const text = getTextFromSelection(selection)
 
         return checkSupportedLangs(language, text)

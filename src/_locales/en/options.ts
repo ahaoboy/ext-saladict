@@ -121,7 +121,7 @@ export const locale: typeof _locale = {
     qsFocus: 'Focus when shows up',
     qsStandalone: 'Standalone',
     qsStandalone_help:
-      'Render dict panel in a standalone window. You can {search selected text outside of browser}.',
+      'Render dict panel in a standalone self. You can {search selected text outside of browser}.',
     qssaSidebar: 'Sidebar Layout',
     qssaSidebar_help: 'Rearrange windows to sidebar-like layout.',
     qssaHeight: 'Window Height',
@@ -359,7 +359,7 @@ export const locale: typeof _locale = {
     main_help: 'Normal windows may not have titlebar.',
     panel: 'Panel',
     panel_help:
-      'Saladict standalone quick search panel is a type of panel window.',
+      'Saladict standalone quick search panel is a type of panel self.',
     calibrate: 'Auto-calibrate',
     calibrateSuccess: 'Calibration success',
     calibrateError: 'Calibration failed'

@@ -28,19 +28,19 @@ setupCaiyunTrsBackend()
 setupRequestGAListener()
 
 getConfig().then(async config => {
-  window.appConfig = config
+  self.appConfig = config
   initPdf(config)
   initBadge()
 
   addConfigListener(({ newConfig }) => {
-    window.appConfig = newConfig
+    self.appConfig = newConfig
   })
 })
 
 createActiveProfileStream().subscribe(profile => {
-  window.activeProfile = profile
+  self.activeProfile = profile
 })
 
 createProfileIDListStream().subscribe(list => {
-  window.profileIDList = list
+  self.profileIDList = list
 })

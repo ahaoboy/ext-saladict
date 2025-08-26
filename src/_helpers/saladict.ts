@@ -1,15 +1,15 @@
 /** Pages with the Saladict extension domain */
-export const isBackgroundPage = () => !!window.__SALADICT_BACKGROUND_PAGE__
+export const isBackgroundPage = () => !!self.__SALADICT_BACKGROUND_PAGE__
 
-export const isInternalPage = () => !!window.__SALADICT_INTERNAL_PAGE__
+export const isInternalPage = () => !!self.__SALADICT_INTERNAL_PAGE__
 
-export const isOptionsPage = () => !!window.__SALADICT_OPTIONS_PAGE__
+export const isOptionsPage = () => !!self.__SALADICT_OPTIONS_PAGE__
 
-export const isPopupPage = () => !!window.__SALADICT_POPUP_PAGE__
+export const isPopupPage = () => !!self.__SALADICT_POPUP_PAGE__
 
-export const isPDFPage = () => !!window.__SALADICT_PDF_PAGE__
+export const isPDFPage = () => !!self.__SALADICT_PDF_PAGE__
 
-export const isQuickSearchPage = () => !!window.__SALADICT_QUICK_SEARCH_PAGE__
+export const isQuickSearchPage = () => !!self.__SALADICT_QUICK_SEARCH_PAGE__
 
 /** Dict panel is in a standalone window */
 export const isStandalonePage = () => isPopupPage() || isQuickSearchPage()

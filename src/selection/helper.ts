@@ -69,7 +69,7 @@ export function isTypeField(element: Node | EventTarget | null): boolean {
 }
 
 export function isBlacklisted(config: AppConfig): boolean {
-  const url = window.pageURL || document.URL || ''
+  const url = self.pageURL || document.URL || ''
   if (!url) {
     return false
   }
@@ -83,12 +83,12 @@ export async function newSelectionWord(
   word: Partial<Word> = {}
 ): Promise<Word> {
   const info = await message.send<'PAGE_INFO'>({ type: 'PAGE_INFO' })
-  window.faviconURL = info.faviconURL
+  self.faviconURL = info.faviconURL
   if (info.pageTitle) {
-    window.pageTitle = info.pageTitle
+    self.pageTitle = info.pageTitle
   }
   if (info.pageURL) {
-    window.pageURL = info.pageURL
+    self.pageURL = info.pageURL
   }
   return newWord({
     title: info.pageTitle || document.title || '',

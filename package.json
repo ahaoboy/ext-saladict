@@ -1,12 +1,13 @@
 {
-  "name": "wordspirit",
+  "name": "open-saladict",
   "version": "7.20.0",
   "description": "Chrome extension and Firefox WebExtension; inline translator powered by multiple online dictionaries",
   "private": true,
   "scripts": {
+    "update-manifest": "node scripts/update-manifest.js",
     "start": "webpack-dev-server --mode development --open --debug",
     "storybook": "start-storybook",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && npm run update-manifest",
     "postbuild": "node scripts/firefox-fix.js",
     "devbuild": "webpack --mode development",
     "type-check": "tsc --noEmit",
@@ -18,7 +19,7 @@
     "release": "standard-version",
     "fixtures": "node scripts/fixtures.js",
     "lint": "eslint src/**/*.{js,ts,tsx}",
-    "clean":"rm -rf ./node_modules ./build ./dist",
+    "clean": "rm -rf ./node_modules ./build ./dist",
     "pdf": "node scripts/pdf.js"
   },
   "husky": {

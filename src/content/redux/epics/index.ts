@@ -52,7 +52,7 @@ export const epics = combineEpics<StoreAction, StoreAction, StoreState>(
           const word = state$.value.searchHistory[state$.value.historyIndex]
 
           if (isPopupPage() || isStandalonePage()) {
-            const { width: screenWidth, height: screenHeight } = window.screen
+            const { width: screenWidth, height: screenHeight } = self.screen
             const width = Math.round(Math.min(Math.max(screenWidth, 440), 640))
             const height = Math.round(Math.min(screenHeight - 150, 800))
 

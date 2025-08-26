@@ -20,7 +20,7 @@ export const initState = async () => {
   const profiles = await pProfiles
   const activeProfile = await pActiveProfile
 
-  const url = window.location.href
+  const url = self.location.href
 
   const isShowMtaBox = activeProfile.mtaAutoUnfold !== 'hide'
 
@@ -74,7 +74,7 @@ export const initState = async () => {
     bowlCoord: { x: 0, y: 0 },
     /** The actual coord of dict panel might be different */
     dictPanelCoord: isOptionsPage()
-      ? { x: window.innerWidth - config.panelWidth - 20, y: 80 }
+      ? { x: self.innerWidth - config.panelWidth - 20, y: 80 }
       : { x: 0, y: 0 },
     panelHeight: 30,
     _panelHeightCache: {
@@ -86,7 +86,7 @@ export const initState = async () => {
       /** independent layer */
       floatHeight: 0
     },
-    panelMaxHeight: (window.innerHeight * config.panelMaxHeightRatio) / 100,
+    panelMaxHeight: (self.innerHeight * config.panelMaxHeightRatio) / 100,
     /** Dicts that will be rendered to dict panel */
     renderedDicts: [] as {
       readonly id: DictID

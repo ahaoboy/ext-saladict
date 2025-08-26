@@ -1,0 +1,913 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        {
+          "header": "Access-Control-Allow-Headers",
+          "operation": "set",
+          "value": "content-type, content-length, host, connection, accept, origin, user-agent, referer, accept-encoding, accept-language, authorization"
+        }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        {
+          "header": "origin",
+          "operation": "set",
+          "value": "https://www.deepl.com/"
+        },
+        {
+          "header": "referer",
+          "operation": "set",
+          "value": "https://www.deepl.com/"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["deepl.com"],
+      "urlFilter": "deepl.com"
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "urlFilter": "https://translate.googleapis.com/translate_tts?*"
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Origin",
+          "operation": "set",
+          "value": "https://translate.google.com"
+        },
+        {
+          "header": "Referer",
+          "operation": "set",
+          "value": "https://translate.google.com/"
+        },
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        { "header": "origin", "operation": "remove" },
+        { "header": "referer", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["translate.google.com"],
+      "urlFilter": "https://translate.google.com/*"
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["cn.bing.com"],
+      "urlFilter": "https://cn.bing.com/*"
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        { "header": "origin", "operation": "remove" },
+        { "header": "referer", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["fanyi.baidu.com"],
+      "urlFilter": "fanyi.baidu.com"
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        {
+          "header": "origin",
+          "operation": "set",
+          "value": "https://www.caiyunai.com/"
+        },
+        {
+          "header": "referer",
+          "operation": "set",
+          "value": "https://www.caiyunai.com/"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["caiyunai.com"],
+      "urlFilter": "caiyunai.com"
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        { "header": "origin", "operation": "remove" },
+        { "header": "referer", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["youdao.com"],
+      "urlFilter": "youdao.com"
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        {
+          "header": "Access-Control-Allow-Headers",
+          "operation": "set",
+          "value": "x-tc-action, x-tc-region, x-tc-timestamp, x-tc-version, content-type, content-length, host, connection, accept, origin, user-agent, referer, accept-encoding, accept-language, x-tc-token, authorization"
+        }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        {
+          "header": "origin",
+          "operation": "set",
+          "value": "https://www.tencentcloudapi.com/"
+        },
+        {
+          "header": "Referer",
+          "operation": "set",
+          "value": "https://www.tencentcloudapi.com/"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["tmt.tencentcloudapi"],
+      "urlFilter": "tmt.tencentcloudapi"
+    }
+  },
+  {
+    "id": 9,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["dictionary.blob.core"],
+      "urlFilter": "dictionary.blob.core"
+    }
+  },
+  {
+    "id": 10,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["ahdictionary.com"],
+      "urlFilter": "ahdictionary.com"
+    }
+  },
+  {
+    "id": 11,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["oxfordlearnersdictionaries.com"],
+      "urlFilter": "oxfordlearnersdictionaries.com"
+    }
+  },
+  {
+    "id": 12,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["cambridge.org"],
+      "urlFilter": "cambridge.org"
+    }
+  },
+  {
+    "id": 13,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        {
+          "header": "origin",
+          "operation": "set",
+          "value": "https://dict.cnki.net/"
+        },
+        {
+          "header": "referer",
+          "operation": "set",
+          "value": "https://dict.cnki.net/"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["cnki.net"],
+      "urlFilter": "cnki.net"
+    }
+  },
+  {
+    "id": 14,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["collinsdictionary.com"],
+      "urlFilter": "collinsdictionary.com"
+    }
+  },
+  {
+    "id": 15,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["etymonline.com"],
+      "urlFilter": "etymonline.com"
+    }
+  },
+  {
+    "id": 16,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "urlFilter": "rackcdn"
+    }
+  },
+  {
+    "id": 18,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["91dict.com"],
+      "urlFilter": "91dict.com"
+    }
+  },
+  {
+    "id": 19,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        {
+          "header": "origin",
+          "operation": "set",
+          "value": "https://zh.dict.naver.com/"
+        },
+        {
+          "header": "referer",
+          "operation": "set",
+          "value": "https://zh.dict.naver.com/"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["dict.naver"],
+      "urlFilter": "dict.naver"
+    }
+  },
+  {
+    "id": 20,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["vocabulary.com"],
+      "urlFilter": "vocabulary.com"
+    }
+  },
+  {
+    "id": 21,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["weblio.jp"],
+      "urlFilter": "weblio.jp"
+    }
+  },
+  {
+    "id": 22,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["urbandictionary.com"],
+      "urlFilter": "urbandictionary.com"
+    }
+  },
+  {
+    "id": 23,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["learnersdictionary.com"],
+      "urlFilter": "learnersdictionary.com"
+    }
+  },
+  {
+    "id": 24,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["merriam-webster.com"],
+      "urlFilter": "merriam-webster.com"
+    }
+  },
+  {
+    "id": 25,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "urlFilter": "britannica"
+    }
+  },
+  {
+    "id": 26,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["wikipedia.org"],
+      "urlFilter": "wikipedia.org"
+    }
+  },
+  {
+    "id": 27,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["zdic.net"],
+      "urlFilter": "zdic.net"
+    }
+  },
+  {
+    "id": 28,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "urlFilter": "hjapi"
+    }
+  },
+  {
+    "id": 30,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["gstatic.com"],
+      "urlFilter": "ssl.gstatic.com"
+    }
+  },
+  {
+    "id": 31,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        { "header": "access-control-allow-origin", "operation": "remove" }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        {
+          "header": "origin",
+          "operation": "set",
+          "value": "https://www.mojidict.com"
+        },
+        {
+          "header": "referer",
+          "operation": "set",
+          "value": "https://www.mojidict.com"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["mojidict.com"],
+      "urlFilter": "mojidict.com"
+    }
+  },
+  {
+    "id": 33,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        {
+          "header": "Access-Control-Allow-Headers",
+          "operation": "set",
+          "value": "content-type, content-length, host, connection, accept, origin, user-agent, referer, accept-encoding, accept-language, authorization"
+        }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "urlFilter": "saladict.aichatone.com"
+    }
+  },
+  {
+    "id": 34,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        {
+          "header": "Access-Control-Allow-Headers",
+          "operation": "set",
+          "value": "x-date,x-content-sha256,content-type, content-length, host, connection, accept, origin, user-agent, referer, accept-encoding, accept-language, authorization"
+        }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["volcengineapi.com"],
+      "urlFilter": "volcengineapi.com"
+    }
+  },
+  {
+    "id": 35,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        { "header": "Cross-Origin-Resource-Policy", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-opener-policy", "operation": "remove" },
+        {
+          "header": "Access-Control-Allow-Headers",
+          "operation": "set",
+          "value": "content-type, content-length, host, connection, accept, origin, user-agent, referer, accept-encoding, accept-language, authorization"
+        }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["niutrans.com"],
+      "urlFilter": "niutrans.com"
+    }
+  },
+  {
+    "id": 36,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        },
+        {
+          "header": "Access-Control-Allow-Headers",
+          "operation": "set",
+          "value": "x-tc-action, x-tc-region, x-tc-timestamp, x-tc-version, content-type, content-length, host, connection, accept, origin, user-agent, referer, accept-encoding, accept-language, x-tc-token, authorization"
+        }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        {
+          "header": "origin",
+          "operation": "set",
+          "value": "https://www.tencentcloudapi.com/"
+        },
+        {
+          "header": "Referer",
+          "operation": "set",
+          "value": "https://www.tencentcloudapi.com/"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["tts.tencentcloudapi"],
+      "urlFilter": "tts.tencentcloudapi"
+    }
+  },
+  {
+    "id": 37,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "Access-Control-Allow-Origin",
+          "operation": "set",
+          "value": "*"
+        }
+      ],
+      "requestHeaders": [
+        { "header": "sec-fetch-site", "operation": "remove" },
+        { "header": "sec-fetch-mode", "operation": "remove" },
+        {
+          "header": "origin",
+          "operation": "set",
+          "value": "https://api.anthropic.com/"
+        }
+      ]
+    },
+    "condition": {
+      "excludedInitiatorDomains": ["anthropic.com"],
+      "urlFilter": "api.anthropic.com"
+    }
+  }
+]

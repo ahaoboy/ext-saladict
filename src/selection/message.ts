@@ -36,7 +36,7 @@ export function postMessageHandler({ data, source }: PostMessageEvent) {
  * Finally send to dict panel.
  */
 export function sendMessage(payload: Message<'SELECTION'>['payload']) {
-  if (window.parent === window) {
+  if (self.parent === window) {
     // top
     if (process.env.DEBUG) {
       console.log('New selection', payload)
@@ -48,7 +48,7 @@ export function sendMessage(payload: Message<'SELECTION'>['payload']) {
     })
   } else {
     // post to upper frames/window
-    window.parent.postMessage(
+    self.parent.postMessage(
       {
         type: 'SALADICT_SELECTION',
         payload

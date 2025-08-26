@@ -42,7 +42,7 @@ export async function openPDF(url?: string, force?: boolean) {
     if (tabs.length > 0 && tabs[0].url) {
       const curURL = tabs[0].url
       if (curURL.startsWith(pdfURL)) {
-        if (window.appConfig.pdfStandalone) {
+        if (self.appConfig.pdfStandalone) {
           if (tabs[0].id != null) {
             await browser.tabs.remove(tabs[0].id)
           }
@@ -56,7 +56,7 @@ export async function openPDF(url?: string, force?: boolean) {
     }
   }
 
-  return window.appConfig.pdfStandalone
+  return self.appConfig.pdfStandalone
     ? openPDFStandalone(pdfURL)
     : openUrl({ url: pdfURL, unique: false })
 }
@@ -111,8 +111,8 @@ function otherPdfListener({
 >[0]) {
   const matchURL = ([r]: ReadonlyArray<string>) => new RegExp(r).test(url)
   if (
-    window.appConfig.pdfBlacklist.some(matchURL) &&
-    !window.appConfig.pdfWhitelist.some(matchURL)
+    self.appConfig.pdfBlacklist.some(matchURL) &&
+    !self.appConfig.pdfWhitelist.some(matchURL)
   ) {
     return
   }
@@ -121,7 +121,7 @@ function otherPdfListener({
     `assets/pdf/web/viewer.html?file=${encodeURIComponent(url)}`
   )
 
-  if (tabId !== -1 && window.appConfig.pdfStandalone === 'always') {
+  if (tabId !== -1 && self.appConfig.pdfStandalone === 'always') {
     browser.tabs.remove(tabId)
     openPDFStandalone(redirectUrl)
     return { cancel: true }
@@ -142,8 +142,8 @@ function httpPdfListener({
   }
   const matchURL = ([r]: ReadonlyArray<string>) => new RegExp(r).test(url)
   if (
-    window.appConfig.pdfBlacklist.some(matchURL) &&
-    !window.appConfig.pdfWhitelist.some(matchURL)
+    self.appConfig.pdfBlacklist.some(matchURL) &&
+    !self.appConfig.pdfWhitelist.some(matchURL)
   ) {
     return
   }
@@ -161,7 +161,7 @@ function httpPdfListener({
         `assets/pdf/web/viewer.html?file=${encodeURIComponent(url)}`
       )
 
-      if (tabId !== -1 && window.appConfig.pdfStandalone === 'always') {
+      if (tabId !== -1 && self.appConfig.pdfStandalone === 'always') {
         browser.tabs.remove(tabId)
         openPDFStandalone(redirectUrl)
         return { cancel: true }

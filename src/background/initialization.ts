@@ -40,8 +40,8 @@ function onCommand(command: string) {
   switch (command) {
     case 'toggle-active':
       updateConfig({
-        ...window.appConfig,
-        active: !window.appConfig.active
+        ...self.appConfig,
+        active: !self.appConfig.active
       })
       break
     case 'toggle-instant':
@@ -54,7 +54,7 @@ function onCommand(command: string) {
             type: 'QUERY_PIN_STATE'
           })
           .then(isPinned => {
-            const config = window.appConfig
+            const config = self.appConfig
             const { enable } = config[isPinned ? 'pinMode' : 'mode'].instant
 
             updateConfig({
@@ -142,15 +142,15 @@ function onCommand(command: string) {
     case 'next-profile':
     case 'prev-profile':
       {
-        const curID = window.activeProfile.id
-        const curIndex = window.profileIDList.findIndex(
+        const curID = self.activeProfile.id
+        const curIndex = self.profileIDList.findIndex(
           ({ id }) => id === curID
         )
         const offset = command === 'next-profile' ? 1 : -1
         const nextIndex =
-          curIndex < 0 ? 0 : (curIndex + offset) % window.profileIDList.length
+          curIndex < 0 ? 0 : (curIndex + offset) % self.profileIDList.length
 
-        updateActiveProfileID(window.profileIDList[nextIndex].id).then(
+        updateActiveProfileID(self.profileIDList[nextIndex].id).then(
           searchTextBox
         )
       }
@@ -163,10 +163,10 @@ function onCommand(command: string) {
       {
         const index = +command.slice(-1)
         if (
-          index < window.profileIDList.length &&
-          window.profileIDList[index].id !== window.activeProfile.id
+          index < self.profileIDList.length &&
+          self.profileIDList[index].id !== self.activeProfile.id
         ) {
-          updateActiveProfileID(window.profileIDList[index].id).then(
+          updateActiveProfileID(self.profileIDList[index].id).then(
             searchTextBox
           )
         }
@@ -185,8 +185,8 @@ async function onInstalled({
   reason: string
   previousVersion?: string
 }) {
-  window.appConfig = await initConfig()
-  window.activeProfile = await initProfiles()
+  self.appConfig = await initConfig()
+  self.activeProfile = await initProfiles()
 
   await storage.local.set(
     mapValues(await storage.local.get(null), (value, key) => {
@@ -201,7 +201,7 @@ async function onInstalled({
       !(await storage.sync.get('hasInstructionsShown')).hasInstructionsShown
     ) {
       openUrl('options.html?menuselected=Privacy&nopanel=true', true)
-      if (window.appConfig.langCode.startsWith('zh')) {
+      if (self.appConfig.langCode.startsWith('zh')) {
         openUrl('https://saladict.crimx.com/notice.html')
       } else {
         openUrl('https://saladict.crimx.com/en/notice.html')
@@ -216,7 +216,7 @@ async function onInstalled({
         const { diff, data } = await checkUpdate(previousVersion, curr.data)
         if (data && diff >= 2) {
           setTimeout(() => {
-            const isZh = window.appConfig.langCode.startsWith('zh')
+            const isZh = self.appConfig.langCode.startsWith('zh')
             const options = {
               type: 'basic',
               iconUrl: browser.runtime.getURL(`assets/icon-128.png`),
@@ -258,7 +258,7 @@ async function onInstalled({
 function onStartup(): void {
   setTimeout(() => {
     // wait for appConfig being loaded
-    if (!process.env.DEBUG && window.appConfig.updateCheck) {
+    if (!process.env.DEBUG && self.appConfig.updateCheck) {
       storage.local
         .get<{ lastCheckUpdate: number }>('lastCheckUpdate')
         .then(async ({ lastCheckUpdate }) => {

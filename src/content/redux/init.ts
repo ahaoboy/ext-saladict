@@ -17,7 +17,7 @@ import { StoreDispatch, StoreState } from './modules'
 import { isTagName } from '@/_helpers/dom'
 
 export const init = (dispatch: StoreDispatch, getState: () => StoreState) => {
-  window.addEventListener('resize', () => {
+  self.addEventListener('resize', () => {
     dispatch({ type: 'WINDOW_RESIZE' })
   })
 

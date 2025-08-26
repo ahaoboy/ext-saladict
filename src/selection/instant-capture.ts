@@ -134,7 +134,7 @@ function getCursorWord(
   let offset: number
   let originRange: Range | undefined
 
-  const sel = window.getSelection()
+  const sel = self.getSelection()
   if (!sel) return null
   if (sel.rangeCount > 0) {
     originRange = sel.getRangeAt(0)

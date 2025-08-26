@@ -19,7 +19,7 @@ const fetchArgs = {
         method: 'PROPFIND',
         headers: {
           Authorization:
-            'Basic ' + window.btoa(`${config.user}:${config.passwd}`),
+            'Basic ' + self.btoa(`${config.user}:${config.passwd}`),
           'Content-Type': 'application/xml; charset="utf-8"',
           Depth: '1'
         }
@@ -34,7 +34,7 @@ const fetchArgs = {
         method: 'MKCOL',
         headers: {
           Authorization:
-            'Basic ' + window.btoa(`${config.user}:${config.passwd}`)
+            'Basic ' + self.btoa(`${config.user}:${config.passwd}`)
         }
       }
     ]
@@ -47,7 +47,7 @@ const fetchArgs = {
         method: 'PUT',
         headers: {
           Authorization:
-            'Basic ' + window.btoa(`${config.user}:${config.passwd}`)
+            'Basic ' + self.btoa(`${config.user}:${config.passwd}`)
         },
         body
       }
@@ -61,7 +61,7 @@ const fetchArgs = {
         method: 'GET',
         headers: {
           Authorization:
-            'Basic ' + window.btoa(`${config.user}:${config.passwd}`),
+            'Basic ' + self.btoa(`${config.user}:${config.passwd}`),
           ...headers
         }
       }
@@ -88,7 +88,7 @@ function mockFetch(
     return o
   }, {})
 
-  window.fetch = jest.fn(
+  self.fetch = jest.fn(
     (url: string, init?: RequestInit): Promise<Response> => {
       const key = urltokey[url + ((init && init.method) || '')]
       const handler = key && route[key]
@@ -103,7 +103,7 @@ function mockFetch(
 describe('Sync service WebDAV', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    window.fetch = null as any
+    self.fetch = null as any
   })
 
   it('upload: should success', async () => {

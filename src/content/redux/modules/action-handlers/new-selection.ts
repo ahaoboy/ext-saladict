@@ -51,16 +51,16 @@ export const newSelection: ActionHandler<
         newState.bowlCoord.x = 30
       } else if (
         newState.bowlCoord.x + iconWidth + 30 + scrollbarWidth >
-        window.innerWidth
+        self.innerWidth
       ) {
         newState.bowlCoord.x =
-          window.innerWidth - iconWidth - scrollbarWidth - 30
+          self.innerWidth - iconWidth - scrollbarWidth - 30
       }
 
       if (newState.bowlCoord.y < 30) {
         newState.bowlCoord.y = 30
-      } else if (newState.bowlCoord.y + iconWidth + 30 > window.innerHeight) {
-        newState.bowlCoord.y = window.innerHeight - iconWidth - 30
+      } else if (newState.bowlCoord.y + iconWidth + 30 > self.innerHeight) {
+        newState.bowlCoord.y = self.innerHeight - iconWidth - 30
       }
 
       newState.dictPanelCoord = {
@@ -70,7 +70,7 @@ export const newSelection: ActionHandler<
 
       if (
         newState.dictPanelCoord.x + newState.config.panelWidth + 20 >
-        window.innerWidth
+        self.innerWidth
       ) {
         // right overflow
         newState.dictPanelCoord.x =

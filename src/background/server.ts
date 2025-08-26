@@ -177,8 +177,8 @@ export class BackgroundServer {
     return openUrl({
       url: await engine.getSrcPage(
         text,
-        window.appConfig,
-        window.activeProfile
+        self.appConfig,
+        self.activeProfile
       ),
       active
     })
@@ -198,7 +198,7 @@ export class BackgroundServer {
 
       try {
         response = await timeout(
-          search(data.text, window.appConfig, window.activeProfile, payload),
+          search(data.text, self.appConfig, self.activeProfile, payload),
           25000
         )
       } catch (e) {
@@ -206,7 +206,7 @@ export class BackgroundServer {
           // retry once
           await timer(500)
           response = await timeout(
-            search(data.text, window.appConfig, window.activeProfile, payload),
+            search(data.text, self.appConfig, self.activeProfile, payload),
             25000
           )
         } else {

@@ -13,9 +13,9 @@ import { openQSPanel } from './open-qs-panel'
 
 export const actionHandlers: ActionHandlers<State, ActionCatalog> = {
   NEW_CONFIG: (state, { payload }) => {
-    const url = window.location.href
+    const url = self.location.href
     const panelMaxHeight =
-      (window.innerHeight * payload.panelMaxHeightRatio) / 100
+      (self.innerHeight * payload.panelMaxHeightRatio) / 100
 
     return {
       ...state,
@@ -56,7 +56,7 @@ export const actionHandlers: ActionHandlers<State, ActionCatalog> = {
   WINDOW_RESIZE: state => ({
     ...state,
     panelMaxHeight:
-      (window.innerHeight * state.config.panelMaxHeightRatio) / 100
+      (self.innerHeight * state.config.panelMaxHeightRatio) / 100
   }),
 
   TEMP_DISABLED_STATE: (state, { payload }) =>
@@ -264,7 +264,7 @@ export const actionHandlers: ActionHandlers<State, ActionCatalog> = {
           },
           dictPanelCoord: {
             x: 50,
-            y: window.innerHeight * 0.2
+            y: self.innerHeight * 0.2
           }
         }
       : {

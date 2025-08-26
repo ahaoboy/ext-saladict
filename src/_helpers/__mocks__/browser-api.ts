@@ -50,24 +50,24 @@ declare global {
  * key: {function} user's callback function
  * values: {Map} listeners, key: message type, values: generated or user's callback functions
  */
-window.__messageListeners__ = window.__messageListeners__ || new Map()
+self.__messageListeners__ = self.__messageListeners__ || new Map()
 
 /**
  * For self page messaging
  * key: {function} user's callback function
  * values: {Map} listeners, key: message type, values: generated or user's callback functions
  */
-window.__messageSelfListeners__ = window.__messageSelfListeners__ || new Map()
+self.__messageSelfListeners__ = self.__messageSelfListeners__ || new Map()
 
 /**
  * key: {function} user's callback function
  * values: {Map} listeners, key: message type, values: generated or user's callback functions
  */
-window.__storageListeners__ = window.__storageListeners__ || new Map()
+self.__storageListeners__ = self.__storageListeners__ || new Map()
 
-const messageListeners = window.__messageListeners__
-const messageSelfListeners = window.__messageSelfListeners__
-const storageListeners = window.__storageListeners__
+const messageListeners = self.__messageListeners__
+const messageSelfListeners = self.__messageSelfListeners__
+const storageListeners = self.__storageListeners__
 
 /* --------------------------------------- *\
  * #Exports
@@ -350,7 +350,7 @@ function _messageAddListener(self: boolean) {
     let listener = listeners.get(messageType || '__DEFAULT_MSGTYPE__')
     if (!listener) {
       listener = ((message, sender, sendResponse) => {
-        if (message && (self ? window.pageId === 'PAGE_INFO' : !'PAGE_INFO')) {
+        if (message && (self ? self.pageId === 'PAGE_INFO' : !'PAGE_INFO')) {
           if (messageType == null || message.type === messageType) {
             return cb(message, sender, sendResponse)
           }

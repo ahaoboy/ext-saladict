@@ -5,10 +5,10 @@ import { timer } from '@/_helpers/promise-more'
 import '@/background/types'
 import { browser } from '../../helper'
 
-window.appConfig = getDefaultConfig()
-window.activeProfile = getDefaultProfile()
+self.appConfig = getDefaultConfig()
+self.activeProfile = getDefaultProfile()
 
-window.fetch = jest.fn(() =>
+self.fetch = jest.fn(() =>
   Promise.resolve({
     ok: true,
     json: () => ''

@@ -33,7 +33,7 @@ onUpdated$
             type: 'GET_TAB_BADGE_INFO'
           })
           .catch(() => {})) || {
-          active: window.appConfig.active,
+          active: self.appConfig.active,
           tempDisable: false,
           unsupported: true
         }
@@ -76,7 +76,7 @@ function setOff(tabId: number) {
   // browser.browserAction.setBadgeBackgroundColor({ color: '#E74C3C', tabId })
   // browser.browserAction.setBadgeText({ text: 'off', tabId })
   browser.browserAction.setTitle({
-    title: require('@/_locales/' + window.appConfig.langCode + '/background')
+    title: require('@/_locales/' + self.appConfig.langCode + '/background')
       .locale.app.off,
     tabId
   })
@@ -87,7 +87,7 @@ function setTempOff(tabId: number) {
   // browser.browserAction.setBadgeBackgroundColor({ color: '#F39C12', tabId })
   // browser.browserAction.setBadgeText({ text: 'off', tabId })
   browser.browserAction.setTitle({
-    title: require('@/_locales/' + window.appConfig.langCode + '/background')
+    title: require('@/_locales/' + self.appConfig.langCode + '/background')
       .locale.app.tempOff,
     tabId
   })
@@ -96,7 +96,7 @@ function setTempOff(tabId: number) {
 function setUnsupported(tabId: number) {
   setIcon(true, tabId)
   browser.browserAction.setTitle({
-    title: require('@/_locales/' + window.appConfig.langCode + '/background')
+    title: require('@/_locales/' + self.appConfig.langCode + '/background')
       .locale.app.unsupported,
     tabId
   })

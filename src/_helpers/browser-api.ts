@@ -196,9 +196,9 @@ function storageClear(): Promise<void>
 function storageClear(this: StorageThisThree): Promise<void> {
   return this.__storageArea__ === 'all'
     ? Promise.all([
-        browser.storage.local.clear(),
-        browser.storage.sync.clear()
-      ]).then(noop)
+      browser.storage.local.clear(),
+      browser.storage.sync.clear()
+    ]).then(noop)
     : browser.storage[this.__storageArea__].clear()
 }
 
@@ -364,13 +364,13 @@ async function messageSendSelf<T extends MsgType, R = undefined>(
     callContext = new Error('Message Call Context')
   }
 
-  if (window.pageId === undefined) {
+  if (self.pageId === undefined) {
     await initClient()
   }
   return browser.runtime
     .sendMessage(
       Object.assign({}, message, {
-        __pageId__: window.pageId,
+        __pageId__: self.pageId,
         type: `[[${message.type}]]`
       })
     )
@@ -392,7 +392,7 @@ function messageAddListener<T extends MsgType>(
   this: MessageThis,
   ...args: [T, onMessageEvent<Message<T>>] | [onMessageEvent<Message>]
 ): void {
-  if (window.pageId === undefined) {
+  if (self.pageId === undefined) {
     initClient()
   }
   const allListeners = this.__self__ ? messageSelfListeners : messageListeners
@@ -409,7 +409,7 @@ function messageAddListener<T extends MsgType>(
       if (
         message &&
         (this.__self__
-          ? window.pageId === message.__pageId__
+          ? self.pageId === message.__pageId__
           : !message.__pageId__)
       ) {
         if (messageType == null || message.type === messageType) {
@@ -471,38 +471,44 @@ function messageCreateStream<T extends MsgType>(
 ): Observable<Message<T>> {
   const pattern$ = messageType
     ? fromEventPattern<Message<T>>(
-        handler => this.addListener(messageType, handler),
-        handler => this.removeListener(messageType, handler)
-      )
+      handler => this.addListener(messageType, handler),
+      handler => this.removeListener(messageType, handler)
+    )
     : fromEventPattern<Message<T>>(
-        handler => this.addListener(handler),
-        handler => this.removeListener(handler)
-      )
+      handler => this.addListener(handler),
+      handler => this.removeListener(handler)
+    )
   // Arguments could be an array if there are multiple values emitted.
   return pattern$.pipe(map(args => (Array.isArray(args) ? args[0] : args)))
 }
 
+
+let id = 0
 /**
  * Deploy page script for self-messaging
  * This method is called on the first sendMessage
  */
-function initClient(): Promise<typeof window.pageId> {
-  if (window.pageId === undefined) {
+function initClient(): Promise<typeof self.pageId> {
+  if (self.pageId === undefined) {
     return message
       .send<'PAGE_INFO'>({ type: 'PAGE_INFO' })
-      .then(({ pageId, faviconURL, pageTitle, pageURL }) => {
-        window.pageId = pageId
-        window.faviconURL = faviconURL
+      .then((info) => {
+        if (!info || !info.pageId) {
+          return ++id
+        }
+        const { pageId, faviconURL, pageTitle, pageURL } = info
+        self.pageId = pageId
+        self.faviconURL = faviconURL
         if (pageTitle) {
-          window.pageTitle = pageTitle
+          self.pageTitle = pageTitle
         }
         if (pageURL) {
-          window.pageURL = pageURL
+          self.pageURL = pageURL
         }
         return pageId
       })
   } else {
-    return Promise.resolve(window.pageId)
+    return Promise.resolve(self.pageId)
   }
 }
 
@@ -511,7 +517,7 @@ function initClient(): Promise<typeof window.pageId> {
  * This method should be invoked in background script
  */
 function initServer(): void {
-  window.pageId = 'background page'
+  self.pageId = 'background page'
   const selfMsgTester = /^\[\[(.+)\]\]$/
 
   browser.runtime.onMessage.addListener(
@@ -526,7 +532,7 @@ function initServer(): void {
 
       const selfMsg = selfMsgTester.exec((message as Message).type)
       if (selfMsg) {
-        ;(message as Mutable<Message>).type = selfMsg[1] as MsgType
+        ; (message as Mutable<Message>).type = selfMsg[1] as MsgType
         const tabId = sender.tab && sender.tab.id
         if (tabId) {
           return messageSend(tabId, message as Message)

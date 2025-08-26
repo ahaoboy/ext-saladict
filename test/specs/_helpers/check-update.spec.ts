@@ -6,12 +6,12 @@ const fetchMock = _fetchMock as FetchMock
 
 describe('Check Update', () => {
   beforeAll(() => {
-    window.fetch = fetchMock
+    self.fetch = fetchMock
   })
 
   beforeEach(() => {
     fetchMock.resetMocks()
-    window.appConfig = getDefaultConfig()
+    self.appConfig = getDefaultConfig()
   })
 
   const tests = [

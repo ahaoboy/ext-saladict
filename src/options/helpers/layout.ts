@@ -36,7 +36,7 @@ const formItemLayoutWithoutDictPanel = {
 } as const
 
 export const useFormItemLayout = () =>
-  useIsShowDictPanel() && window.innerWidth < 1920
+  useIsShowDictPanel() && self.innerWidth < 1920
     ? formItemLayoutWithDictPanel
     : formItemLayoutWithoutDictPanel
 
@@ -53,6 +53,6 @@ const listLayoutWithoutPanel = {
 } as const
 
 export const useListLayout = () =>
-  useIsShowDictPanel() && window.innerWidth < 1920
+  useIsShowDictPanel() && self.innerWidth < 1920
     ? listLayoutWithPanel
     : listLayoutWithoutPanel

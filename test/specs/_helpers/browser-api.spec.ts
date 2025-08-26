@@ -7,10 +7,10 @@ import { Message } from '@/typings/message'
 describe('Browser API Wapper', () => {
   beforeEach(() => {
     browser.flush()
-    delete window.pageId
-    delete window.faviconURL
-    delete window.pageTitle
-    delete window.pageURL
+    delete self.pageId
+    delete self.faviconURL
+    delete self.pageTitle
+    delete self.pageURL
     browser.runtime.sendMessage.callsFake(() => Promise.resolve({}))
     browser.tabs.sendMessage.callsFake(() => Promise.resolve({}))
   })
@@ -452,10 +452,10 @@ describe('Browser API Wapper', () => {
         expect(
           browser.runtime.sendMessage.calledWith({ type: 'PAGE_INFO' })
         ).toBeTruthy()
-        expect(window.pageId).toBe('pageId')
-        expect(window.faviconURL).toBe('faviconURL')
-        expect(window.pageTitle).toBe('pageTitle')
-        expect(window.pageURL).toBe('pageURL')
+        expect(self.pageId).toBe('pageId')
+        expect(self.faviconURL).toBe('faviconURL')
+        expect(self.pageTitle).toBe('pageTitle')
+        expect(self.pageURL).toBe('pageURL')
       })
     })
     describe('message.self.initServer', () => {
@@ -519,7 +519,7 @@ describe('Browser API Wapper', () => {
       })
     })
     it('message.self.send', () => {
-      window.pageId = 1
+      self.pageId = 1
       message.self.send({
         type: 'QUERY_PANEL_STATE',
         payload: 'value'
@@ -527,13 +527,13 @@ describe('Browser API Wapper', () => {
       expect(
         browser.runtime.sendMessage.calledWith({
           type: '[[QUERY_PANEL_STATE]]',
-          __pageId__: window.pageId,
+          __pageId__: self.pageId,
           payload: 'value'
         })
       ).toBeTruthy()
     })
     it('message.self.addListener', () => {
-      window.pageId = 1
+      self.pageId = 1
       const cb1 = jest.fn()
       const cb2 = jest.fn()
       let cb1Call = 0
@@ -544,7 +544,7 @@ describe('Browser API Wapper', () => {
       expect(cb1).toHaveBeenCalledTimes(cb1Call)
       expect(cb2).toHaveBeenCalledTimes(cb2Call)
 
-      browser.runtime.onMessage.dispatch({ type: 1, __pageId__: window.pageId })
+      browser.runtime.onMessage.dispatch({ type: 1, __pageId__: self.pageId })
       expect(cb1).toHaveBeenCalledTimes(++cb1Call)
       expect(cb2).toHaveBeenCalledTimes(cb2Call)
 
@@ -554,28 +554,28 @@ describe('Browser API Wapper', () => {
 
       browser.runtime.onMessage.dispatch({
         type: 1,
-        __pageId__: window.pageId + 2
+        __pageId__: self.pageId + 2
       })
       expect(cb1).toHaveBeenCalledTimes(cb1Call)
       expect(cb2).toHaveBeenCalledTimes(cb2Call)
     })
     it('message.self.removeListener', () => {
-      window.pageId = 1
+      self.pageId = 1
       const cb1 = jest.fn()
       let cb1Call = 0
       message.self.addListener(cb1)
-      browser.runtime.onMessage.dispatch({ __pageId__: window.pageId })
+      browser.runtime.onMessage.dispatch({ __pageId__: self.pageId })
       expect(cb1).toHaveBeenCalledTimes(++cb1Call)
 
       message.self.removeListener(cb1)
       expect(browser.runtime.onMessage.removeListener.calledOnce).toBeTruthy()
 
-      browser.runtime.onMessage.dispatch({ __pageId__: window.pageId })
+      browser.runtime.onMessage.dispatch({ __pageId__: self.pageId })
       expect(cb1).toHaveBeenCalledTimes(cb1Call)
     })
     describe('message.self.createStream', () => {
       it('without argument', () => {
-        window.pageId = 1
+        self.pageId = 1
         const nextStub = jest.fn()
         const errorStub = jest.fn()
         const completeStub = jest.fn()
@@ -590,25 +590,25 @@ describe('Browser API Wapper', () => {
 
         browser.runtime.onMessage.dispatch({
           type: 1,
-          __pageId__: window.pageId
+          __pageId__: self.pageId
         })
         expect(nextStub).toHaveBeenCalledTimes(1)
         expect(errorStub).toHaveBeenCalledTimes(0)
         expect(completeStub).toHaveBeenCalledTimes(0)
-        expect(nextStub).toBeCalledWith({ type: 1, __pageId__: window.pageId })
+        expect(nextStub).toBeCalledWith({ type: 1, __pageId__: self.pageId })
 
         browser.runtime.onMessage.dispatch({
           type: 2,
-          __pageId__: window.pageId
+          __pageId__: self.pageId
         })
         expect(nextStub).toHaveBeenCalledTimes(2)
         expect(errorStub).toHaveBeenCalledTimes(0)
         expect(completeStub).toHaveBeenCalledTimes(1)
-        expect(nextStub).toBeCalledWith({ type: 2, __pageId__: window.pageId })
+        expect(nextStub).toBeCalledWith({ type: 2, __pageId__: self.pageId })
       })
 
       it('with message type', () => {
-        window.pageId = 1
+        self.pageId = 1
         const nextStub = jest.fn()
         const errorStub = jest.fn()
         const completeStub = jest.fn()
@@ -623,7 +623,7 @@ describe('Browser API Wapper', () => {
 
         browser.runtime.onMessage.dispatch({
           type: 'CLOSE_QS_PANEL',
-          __pageId__: window.pageId
+          __pageId__: self.pageId
         })
         expect(nextStub).toHaveBeenCalledTimes(0)
         expect(errorStub).toHaveBeenCalledTimes(0)
@@ -631,14 +631,14 @@ describe('Browser API Wapper', () => {
 
         browser.runtime.onMessage.dispatch({
           type: 'OPEN_QS_PANEL',
-          __pageId__: window.pageId
+          __pageId__: self.pageId
         })
         expect(nextStub).toHaveBeenCalledTimes(1)
         expect(errorStub).toHaveBeenCalledTimes(0)
         expect(completeStub).toHaveBeenCalledTimes(1)
         expect(nextStub.mock.calls[0][0]).toEqual({
           type: 'OPEN_QS_PANEL',
-          __pageId__: window.pageId
+          __pageId__: self.pageId
         })
       })
     })

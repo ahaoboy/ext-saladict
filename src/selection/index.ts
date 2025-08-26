@@ -22,8 +22,8 @@ import { createQuickSearchStream } from './quick-search'
 import { createSelectTextStream } from './select-text'
 
 // Firefox somehow loads it two times
-if (!window.__SALADICT_SELECTION_LOADED__) {
-  window.__SALADICT_SELECTION_LOADED__ = true
+if (!self.__SALADICT_SELECTION_LOADED__) {
+  self.__SALADICT_SELECTION_LOADED__ = true
 
   const config$$ = createConfigStream().pipe(
     map(config => (isBlacklisted(config) ? null : config)),
@@ -49,7 +49,7 @@ if (!window.__SALADICT_SELECTION_LOADED__) {
    * Beware that this is run on every frame.
    */
   message.createStream('EMIT_SELECTION').subscribe(async () => {
-    const selection = window.getSelection()
+    const selection = self.getSelection()
     if (selection && selection.rangeCount > 0) {
       const text = getTextFromSelection(selection)
       const rect = selection.getRangeAt(0).getBoundingClientRect()
@@ -75,7 +75,7 @@ if (!window.__SALADICT_SELECTION_LOADED__) {
   })
 
   /** Pass through message from iframes */
-  window.addEventListener('message', postMessageHandler)
+  self.addEventListener('message', postMessageHandler)
 
   /**
    * Escape key pressed

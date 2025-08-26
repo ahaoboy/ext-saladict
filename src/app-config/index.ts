@@ -80,7 +80,7 @@ function _getDefaultConfig() {
 
     bowlOffsetY: -45,
 
-    darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
+    darkMode: self.matchMedia('(prefers-color-scheme: dark)').matches,
 
     /** custom panel css */
     panelCSS: '',

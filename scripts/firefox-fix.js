@@ -46,7 +46,7 @@ async function main() {
     }
   })
 
-  manifest.background.scripts.push(...dynamicChunksWithoutAntd)
+  // manifest.background.scripts.push(...dynamicChunksWithoutAntd)
 
   await fs.outputJSON(manifestPath, manifest, { spaces: 2 })
 
@@ -112,12 +112,12 @@ async function getStaticChunks(htmls) {
     }
   })
 
-  manifest.background.scripts.forEach(name => {
-    const m = /assets\/([^.]+)\.[^.]+\.js/.exec(name)
-    if (m) {
-      staticChunks.add(m[1])
-    }
-  })
+  // manifest.background.scripts.forEach(name => {
+  //   const m = /assets\/([^.]+)\.[^.]+\.js/.exec(name)
+  //   if (m) {
+  //     staticChunks.add(m[1])
+  //   }
+  // })
 
   staticChunks.delete('franc')
 

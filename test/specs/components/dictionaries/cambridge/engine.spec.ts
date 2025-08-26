@@ -3,11 +3,11 @@ import { search } from '@/components/dictionaries/cambridge/engine'
 import { getDefaultConfig, AppConfigMutable } from '@/app-config'
 import getDefaultProfile from '@/app-config/profiles'
 
-const fetchbak = window.fetch
+const fetchbak = self.fetch
 
 describe('Dict/Cambridge/engine', () => {
   afterAll(() => {
-    window.fetch = fetchbak
+    self.fetch = fetchbak
   })
 
   it('should parse result (en) correctly', () => {
