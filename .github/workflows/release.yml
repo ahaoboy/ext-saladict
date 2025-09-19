@@ -38,3 +38,24 @@ jobs:
           tag: nightly
           artifacts: "build/*.zip"
           allowUpdates: true
+
+      - name: Upload ext-saladict-chrome
+        uses: actions/upload-artifact@v4
+        with:
+          name: ext-saladict-chrome
+          path: "build/ext-saladict-chrome.zip"
+      - name: Upload ext-saladict-edge.zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: ext-saladict-edge
+          path: "build/ext-saladict-edge.zip"
+      - name: Upload ext-saladict-firefox
+        uses: actions/upload-artifact@v4
+        with:
+          name: ext-saladict-firefox
+          path: "build/ext-saladict-firefox.zip"
+      - name: Upload ext-saladict-safari
+        uses: actions/upload-artifact@v4
+        with:
+          name: ext-saladict-safari
+          path: "build/ext-saladict-safari.zip"
