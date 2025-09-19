@@ -18,6 +18,7 @@
     "release": "standard-version",
     "fixtures": "node scripts/fixtures.js",
     "lint": "eslint src/**/*.{js,ts,tsx}",
+    "clean":"rm -rf ./node_modules ./build ./dist",
     "pdf": "node scripts/pdf.js"
   },
   "husky": {

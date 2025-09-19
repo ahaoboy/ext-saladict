@@ -1,0 +1,40 @@
+name: Release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -CeEuo pipefail {0}
+
+jobs:
+  upload-assets:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+
+      - name: build
+        run: |
+          sudo apt install -y zip unzip
+          npm i -g yarn
+          yarn install --frozen-lockfile
+          yarn pdf
+          yarn build
+
+          bash zip.sh
+
+      - uses: ncipollo/release-action@v1
+        with:
+          tag: nightly
+          artifacts: "build/*.zip"
+          allowUpdates: true
