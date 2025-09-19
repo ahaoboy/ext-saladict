@@ -44,7 +44,7 @@ jobs:
         with:
           name: ext-saladict-chrome
           path: "build/ext-saladict-chrome.zip"
-      - name: Upload ext-saladict-edge.zip
+      - name: Upload ext-saladict-edge
         uses: actions/upload-artifact@v4
         with:
           name: ext-saladict-edge
